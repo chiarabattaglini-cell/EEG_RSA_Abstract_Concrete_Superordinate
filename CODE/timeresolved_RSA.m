@@ -5,12 +5,12 @@
 %
 % Description:
 %   This script performs time-resolved RSA by correlating a time-series
-%   of EEG pairwise distance matrices (RDMs) with model RDMs representing
+%   of EEG pairwise Euclidean distance matrices (RDMs) with model RDMs representing
 %   different theoretical accounts of conceptual representation:
-%     - Distributional semantics  (word2vec Euclidean distances)
-%     - Sensorimotor features     (sensory-motor Euclidean distances)
-%     - Abstraction               (abstraction ratings pairwise distances)
-%     - Abstractness              (abstractness ratings pairwise distances)
+%     - Distributional semantics  (word2vec Euclidean pairwise distances)
+%     - Sensorimotor features     (sensory-motor Euclidean pairwise distances)
+%     - Abstraction               (abstraction ratings Euclidean pairwise distances)
+%     - Abstractness              (abstractness ratings Euclidean pairwise distances)
 %
 %   Two analysis modes are available (set USE_PARTIAL_CORR below):
 %     MODE 1 — Simple RSA:   Spearman correlation between EEG RDM and each
@@ -23,7 +23,7 @@
 %   - Family-wise correction across timepoints and models: FDR-BH (q < 0.01)
 %   - One-tailed p-value (positive correlation)
 %
-% Input files (all .mat, located in DATAPATH):
+% Input files (all .mat, located in Data/RSA):
 %   Dist_eu_EEG.mat          -> Deu_EEG   [timepoints x pairs]
 %   Disteu_abstraction.mat   -> Abtion_pdist  [1 x pairs]
 %   Abtness_pdist.mat        -> Abtness_pdist [1 x pairs]
@@ -36,17 +36,19 @@
 %
 % Dependencies:
 %   fdr_bh.m  (Benjamini & Hochberg FDR correction)
-%   Available at: https://www.mathworks.com/matlabcentral/fileexchange/27418
+%   Available at:
+%   https://www.mathworks.com/matlabcentral/fileexchange/27418 and located
+%   in CODE/functions
 %
 % Reference:
 %   Kriegeskorte et al. (2008). Representational similarity analysis –
 %   connecting the branches of systems neuroscience. Frontiers in Systems
-%   Neuroscience, 2, 4.
+%   Neuroscience, 2, 4, https://doi.org/10.3389/neuro.06.004.2008.
 %
-%   Benjamini & Hochberg (1995). Controlling the false discovery rate.
-%   Journal of the Royal Statistical Society B, 57(1), 289-300.
+%   Benjamini & Hochberg (1995). Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing.
+%   Journal of the Royal Statistical Society B, 57(1), 289-300, https://doi.org/10.1111/j.2517-6161.1995.tb02031.x.
 %
-% Author:  [Chiara Battaglini Giacomo Handjaras]
+% Authors:  [Chiara Battaglini Giacomo Handjaras]
 % Date:    [22/05/26]
 % Version: 1.0
 % =========================================================================
@@ -60,7 +62,7 @@ clear; close all; clc
 % -------------------------------------------------------------------------
 
 % Path to data files and output destination
-DATAPATH = pwd;   % <-- change to your data folder if needed
+DATAPATH = pwd;   % <-- change to your data folder
 
 % Analysis mode:
 %   false  →  Simple RSA    (independent Spearman correlations)

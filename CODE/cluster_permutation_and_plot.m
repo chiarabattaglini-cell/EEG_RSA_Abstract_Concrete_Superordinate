@@ -2,7 +2,7 @@
 %  CLUSTER-BASED PERMUTATION TEST & TOPOGRAPHIC VISUALIZATION
 %  -------------------------------------------------------------------------
 %  This script:
-%    1. Loads grand-average ERP data for three semantic conditions
+%    1. Loads grand-average ERP data for three conditions
 %       (abstract, concrete, superordinate)
 %    2. Builds a channel neighbourhood structure
 %    3. Runs a non-parametric cluster-based permutation test (Monte Carlo)
@@ -21,7 +21,7 @@
 %  Dependencies : FieldTrip toolbox (ft_defaults must be on MATLAB path)
 %  Reference    : Maris & Oostenveld (2007). Nonparametric statistical
 %                 testing of EEG- and MEG-data. Journal of Neuroscience
-%                 Methods, 164(1), 177–190.
+%                 Methods, 164(1), 177–190, doi: 10.1016/j.jneumeth.2007.03.024.
 %  Authors      : [Chiara Battaglini, Davide Bottari, Martina Berto]
 %  Last updated : [22/05/26]
 % =========================================================================
@@ -71,7 +71,7 @@ NEIGHBOUR_DIST = 0.11;   % neighbourhood distance threshold
 CLUSTER_ALPHA  = 0.05;   % cluster-forming alpha (sample level)
 TEST_ALPHA     = 0.025;  % permutation test alpha (one-tailed)
 TAIL           = 0;      % 0 = two-sided, 1 = right, -1 = left
-N_PERMUTATIONS = 1000;   % number of Monte Carlo draws
+N_PERMUTATIONS = 10000;   % number of Monte Carlo draws
 MIN_NB_CHAN    = 2;      % minimum neighbours to form a cluster
 
 % --- Topography plot parameters -------------------------------------------

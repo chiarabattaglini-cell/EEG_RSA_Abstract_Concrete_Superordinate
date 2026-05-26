@@ -4,7 +4,7 @@
 %
 % Description:
 %   This script performs a cluster-based non-parametric permutation test
-%   (Monte Carlo approximation) on ERP data across three semantic
+%   (Monte Carlo approximation) on ERP data across three
 %   conditions: Abstract, Concrete, and Superordinate words.
 %   A dependent-samples multivariate F-statistic is used to assess
 %   differences in scalp topography over time.
@@ -13,7 +13,7 @@
 %   - Test:            Dependent-samples multivariate F (one-way repeated
 %                      measures ANOVA across 3 conditions)
 %   - Correction:      Cluster-based permutation (maxsum statistic)
-%   - Permutations:    1000
+%   - Permutations:    10000
 %   - Alpha (cluster): 0.05 (one-tailed)
 %   - Min. neighbours: 2 channels
 %
@@ -28,13 +28,14 @@
 %
 % Requirements:
 %   - FieldTrip toolbox (tested with fieldtrip-20200130)
-%   - Electrode layout file: GSN_HydroCel_65_noF.sfp
+%   - Electrode layout file: GSN_HydroCel_65_noF.sfp (Available in
+%   Data/EEG/chanloc)
 %
 % Reference:
 %   Maris & Oostenveld (2007). Nonparametric statistical testing of
-%   EEG- and MEG-data. Journal of Neuroscience Methods, 164(1), 177-190.
+%   EEG- and MEG-data. Journal of Neuroscience Methods, 164(1), 177-190, doi: 10.1016/j.jneumeth.2007.03.024.
 %
-% Author:  [Chiara Battaglini Davide Bottari Martina Berto]
+% Authors:  [Chiara Battaglini Davide Bottari Martina Berto]
 % Date:    [22/05/26]
 % Version: 1.0
 % =========================================================================
@@ -96,7 +97,7 @@ STAT_PARAMS.minnbchan        = 2;
 STAT_PARAMS.tail             = 1;    % one-tailed (F-statistic is always >= 0)
 STAT_PARAMS.clustertail      = 1;
 STAT_PARAMS.alpha            = 0.05;
-STAT_PARAMS.numrandomization = 1000;
+STAT_PARAMS.numrandomization = 10000;
 STAT_PARAMS.latency          = [];   % full epoch; set to [tmin tmax] to restrict
 
 % Neighbourhood distance (in units of the layout coordinates)

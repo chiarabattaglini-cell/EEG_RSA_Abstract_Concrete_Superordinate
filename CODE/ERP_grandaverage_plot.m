@@ -2,7 +2,7 @@
 % ERP Grand Average and Time-Domain Plot
 %
 % Description:
-%   Loads epoched EEG files (.set) for three semantic conditions
+%   Loads epoched EEG files (.set) for three conditions
 %   (abstract, concrete, superordinate), converts them from EEGLAB to
 %   FieldTrip format, computes grand averages, and plots ERPs with
 %   standard error shading for a cluster of electrodes of interest.
@@ -10,11 +10,11 @@
 % Dependencies:
 %   - EEGLAB (tested with eeglab2020_0)
 %   - FieldTrip (tested with fieldtrip2020)
-%   - boundedline (kakearney-boundedline-pkg)
+%   - boundedline (kakearney-boundedline-pkg); available in Data/EEG
 %
 % Input:
 %   Epoched and baseline-corrected .set files organised in:
-%   <MAINPATH>/TIME_DOMAIN_01/
+%   Data/EEG/TIME_DOMAIN_01/
 %   Named as: *abstract.set, *concrete.set, *superordinate.set
 %
 % Output:
@@ -37,8 +37,8 @@ BOUNDEDLINE_PATH= 'kakearney-boundedline-pkg-8179f9a';
 % Output subfolder name (created automatically if it does not exist)
 OUTPUT_FOLDER   = 'Your folder name';
 
-% Channel location file (relative to MAINPATH)
-CHANLOC_FILE    = 'chanloc/GSN_HydroCel_65_noF.sfp';
+% Channel location file
+CHANLOC_FILE    = 'chanloc/GSN_HydroCel_65_noF.sfp'; %available in Data/EEG/chanloc
 
 % -------------------------------------------------------------------------
 % ELECTRODE CLUSTER OF INTEREST
