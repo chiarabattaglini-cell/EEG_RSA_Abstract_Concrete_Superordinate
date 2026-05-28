@@ -97,7 +97,7 @@ STAT_PARAMS.minnbchan        = 2;
 STAT_PARAMS.tail             = 1;    % one-tailed (F-statistic is always >= 0)
 STAT_PARAMS.clustertail      = 1;
 STAT_PARAMS.alpha            = 0.05;
-STAT_PARAMS.numrandomization = 10000;
+STAT_PARAMS.numrandomization = 1000;
 STAT_PARAMS.latency          = [];   % full epoch; set to [tmin tmax] to restrict
 
 % Neighbourhood distance (in units of the layout coordinates)

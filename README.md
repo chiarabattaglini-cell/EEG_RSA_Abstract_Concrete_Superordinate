@@ -3,6 +3,8 @@
 This repository contains the analysis code and data accompanying the paper:
 
 > **Unraveling the interplay between sensory information and semantic architecture in brain concept representation: the role of abstraction**
+> **Authors: Chiara Battaglini, Davide Bottari, Giacomo Handjaras, Martina Berto, Ella Striem-Amit,**
+> **Pietro Pietrini, Alessandro Lenci, Giovanna Marotta, Emiliano Ricciardi**
 
 ---
 

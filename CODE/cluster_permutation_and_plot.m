@@ -47,7 +47,7 @@ LAYOUT_FILE  = 'chanloc/GSN-HydroCel-65_lay.mat';
 
 % --- Contrast to test -----------------------------------------------------
 % Choose which two conditions to compare.
-% Options: 'ABS_vs_CNC' | 'ABS_vs_SUP' | 'CNC_vs_SUP'
+% Options: 'ABS_vs_CNC' | 'ABS_vs_SUP' | 'SUPvsCNC'
 CONTRAST = 'ABS_vs_CNC';
 
 % --- Latency window (seconds) --------------------------------------------
@@ -70,8 +70,8 @@ CHANNELS = {'E3','E4','E6','E7','E9','E12','E14','E15','E16', ...
 NEIGHBOUR_DIST = 0.11;   % neighbourhood distance threshold
 CLUSTER_ALPHA  = 0.05;   % cluster-forming alpha (sample level)
 TEST_ALPHA     = 0.025;  % permutation test alpha (one-tailed)
-TAIL           = 0;      % 0 = two-sided, 1 = right, -1 = left
-N_PERMUTATIONS = 10000;   % number of Monte Carlo draws
+TAIL           = 1;      % 0 = two-sided, 1 = right, -1 = left
+N_PERMUTATIONS = 1000;   % number of Monte Carlo draws
 MIN_NB_CHAN    = 2;      % minimum neighbours to form a cluster
 
 % --- Topography plot parameters -------------------------------------------
@@ -205,11 +205,11 @@ switch upper(CONTRAST)
     case 'ABS_VS_SUP'
         condA = grandavg_ABS;  condB = grandavg_SUP;
         contrast_label = 'ABSvsSUP';
-    case 'CNC_VS_SUP'
-        condA = grandavg_CNC;  condB = grandavg_SUP;
-        contrast_label = 'CNCSvsSUP';
+    case 'SUP_VS_CNC'
+        condA = grandavg_SUP;  condB = grandavg_CNC;
+        contrast_label = 'SUPvsCNC';
     otherwise
-        error('Unknown CONTRAST. Use ''ABS_vs_CNC'', ''ABS_vs_SUP'', or ''CNC_vs_SUP''.');
+        error('Unknown CONTRAST. Use ''ABS_vs_CNC'', ''ABS_vs_SUP'', or ''SUPvsCNC''.');
 end
 
 fprintf('Running permutation test: %s\n', contrast_label);
@@ -260,8 +260,8 @@ switch upper(CONTRAST)
         GA_A = grandavg_COND_ABS;  GA_B = grandavg_COND_CNC;
     case 'ABS_VS_SUP'
         GA_A = grandavg_COND_ABS;  GA_B = grandavg_COND_SUP;
-    case 'CNC_VS_SUP'
-        GA_A = grandavg_COND_CNC;  GA_B = grandavg_COND_SUP;
+    case 'SUP_VS_CNC'
+        GA_A = grandavg_COND_SUP;  GA_B = grandavg_COND_CNC;
 end
 
 % Grand-average difference map (A minus B)
